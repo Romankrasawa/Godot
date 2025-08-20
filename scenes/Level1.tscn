@@ -81,3 +81,10 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_cove1")
 animation = &"run"
 frame_progress = 0.268809
+
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -33.0
+offset_right = 23.0
+offset_bottom = -10.0
+text = "соси"
