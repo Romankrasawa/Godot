@@ -10,20 +10,24 @@ radius = 74.3303
 radius = 30.0167
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkbp5"]
-radius = 7.0
-height = 26.0
+radius = 18.0
+height = 36.0
 
 [node name="Enemy" instance=ExtResource("1_hkbp5")]
 script = ExtResource("2_8nhdp")
+speed = null
+maxHealth = null
+health = null
+armour = null
 
 [node name="CollisionShape" parent="." index="1"]
 light_mask = 4
 visibility_layer = 15
-position = Vector2(0, 5)
+position = Vector2(0, 8)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="2"]
 path_desired_distance = 3.0
-target_desired_distance = 1.0
+target_desired_distance = 5.0
 path_max_distance = 10.0
 navigation_layers = 3
 path_postprocessing = 1
@@ -59,14 +63,10 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
 light_mask = 4
 visibility_layer = 8
-position = Vector2(-15, 3)
+position = Vector2(-15, 1)
 shape = SubResource("CapsuleShape2D_hkbp5")
-
-[node name="TimerInvisibilityFrames" type="Timer" parent="." index="8"]
-wait_time = 0.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_exited" from="OuterDetectionArea" to="." method="_on_outer_detection_area_body_exited"]
 [connection signal="body_entered" from="InnerDetectionArea" to="." method="_on_inner_detection_area_body_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
-[connection signal="timeout" from="TimerInvisibilityFrames" to="." method="_on_timer_invisibility_frames_timeout"]
