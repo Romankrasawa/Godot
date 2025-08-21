@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyqeo5ll32v6j"
-path="res://.godot/imported/knight_f_idle_anim_f3.png-160761aa3c436a36fa245b89b2aac164.ctex"
+uid="uid://wdjrl7c5jx2e"
+path="res://.godot/imported/knight_f_run_anim_f0.png-b81f1be237d9d0c862d506dce8f86164.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/knight/knight_f_idle_anim_f3.png"
-dest_files=["res://.godot/imported/knight_f_idle_anim_f3.png-160761aa3c436a36fa245b89b2aac164.ctex"]
+source_file="res://assets/sprites/knight/knight_f_run_anim_f0.png"
+dest_files=["res://.godot/imported/knight_f_run_anim_f0.png-b81f1be237d9d0c862d506dce8f86164.ctex"]
 
 [params]
 

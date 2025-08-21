@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2g0w7x11p6pf"]
+
+[ext_resource type="PackedScene" uid="uid://doqcv26m4ebdm" path="res://scenes/blueprints/Entity.tscn" id="1_hkbp5"]
+[ext_resource type="Script" uid="uid://dwg18n0f1qyct" path="res://scripts/Enemy.gd" id="2_8nhdp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8nhdp"]
+radius = 74.3303
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkbp5"]
+radius = 30.0167
+
+[node name="Enemy" instance=ExtResource("1_hkbp5")]
+script = ExtResource("2_8nhdp")
+
+[node name="CollisionShape" parent="." index="1"]
+light_mask = 2
+visibility_layer = 3
+position = Vector2(0, 8)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="2"]
+path_desired_distance = 1.0
+target_desired_distance = 1.0
+path_max_distance = 10.0
+navigation_layers = 3
+path_postprocessing = 1
+simplify_path = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 0.1
+autostart = true
+
+[node name="OuterDetectionArea" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OuterDetectionArea" index="0"]
+light_mask = 0
+visibility_layer = 3
+shape = SubResource("CircleShape2D_8nhdp")
+
+[node name="InnerDetectionArea" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerDetectionArea" index="0"]
+light_mask = 0
+visibility_layer = 3
+shape = SubResource("CircleShape2D_hkbp5")
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="6"]
+target_position = Vector2(0, 100)
+collision_mask = 3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_exited" from="OuterDetectionArea" to="." method="_on_outer_detection_area_body_exited"]
+[connection signal="body_entered" from="InnerDetectionArea" to="." method="_on_inner_detection_area_body_entered"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://doqcv26m4ebdm"]
+
+[ext_resource type="Script" uid="uid://d10qkm8bno58f" path="res://scripts/entity.gd" id="1_5mefe"]
+[ext_resource type="Texture2D" uid="uid://c7ytbowcpnqvj" path="res://assets/sprites/knight/knight_m_run_anim_f0.png" id="2_a2vab"]
+[ext_resource type="Texture2D" uid="uid://dk4auh7hx2hb4" path="res://assets/sprites/knight/knight_m_idle_anim_f0.png" id="2_m5u4s"]
+[ext_resource type="Texture2D" uid="uid://cu5pf6fucrx7d" path="res://assets/sprites/knight/knight_m_run_anim_f1.png" id="3_6ck67"]
+[ext_resource type="Texture2D" uid="uid://ilq7jomvbplu" path="res://assets/sprites/knight/knight_m_idle_anim_f1.png" id="3_jxlr1"]
+[ext_resource type="Texture2D" uid="uid://dbdh1pvjuef4i" path="res://assets/sprites/knight/knight_m_run_anim_f2.png" id="4_4g4r0"]
+[ext_resource type="Texture2D" uid="uid://dxsnawttu5f3d" path="res://assets/sprites/knight/knight_m_idle_anim_f2.png" id="4_435hv"]
+[ext_resource type="Texture2D" uid="uid://dxg226v5245uo" path="res://assets/sprites/knight/knight_m_idle_anim_f3.png" id="5_f1snu"]
+[ext_resource type="Texture2D" uid="uid://dkubaltddd6a1" path="res://assets/sprites/knight/knight_m_run_anim_f3.png" id="5_yise7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qh2p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m5u4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jxlr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_435hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f1snu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a2vab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6ck67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4g4r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yise7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5u4s"]
+radius = 5.0
+height = 12.0
+
+[node name="Entity" type="CharacterBody2D"]
+script = ExtResource("1_5mefe")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5qh2p")
+animation = &"idle"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_m5u4s")
