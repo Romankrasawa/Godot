@@ -4,11 +4,18 @@ class_name Enemy extends Entity
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var ray_cast = $RayCast2D
 @onready var invisibility_timer = $TimerInvisibilityFrames
+@onready var health_bar = $HealthBar
+var healthbar_hidden = true
+
 var detected = false
 var player_in_area = false
 var facingRight = true
 var invisible = false
 var stunned = false
+
+func _ready() -> void:
+	health_bar.max_value = maxHealth
+	health_bar.value = health
 
 func _process(delta: float) -> void:
 	if player_in_area:
@@ -52,6 +59,10 @@ func _on_inner_detection_area_body_entered(body: Node2D) -> void:
 func take_damage(damage: int):
 	if !invisible:
 		health = clamp(health - damage, 0 , maxHealth)
+		health_bar.value = health
+		if healthbar_hidden:
+			healthbar_hidden = false
+			health_bar.show()
 		if health == 0:
 			die()
 	
