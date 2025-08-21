@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 100
-@onready var animationSprite = $AnimatedSprite2D
+@onready var animationSprite = $AnimatedSprite2"res://scripts/character_body_2d.gd"D
 var facingRight = true
 
 func changeDirections():

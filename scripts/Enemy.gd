@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 		aim()
 		if ray_cast.get_collider() == Target:
 			detected = true
-		print("in area")
+		
 	else:
 		print("not in area")
 	if !nav_agent.is_target_reached():
